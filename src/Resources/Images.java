@@ -57,6 +57,7 @@ public class Images {
 
     public static BufferedImage testMap;
     public static BufferedImage testMaptwo;
+    public static BufferedImage helloWorld;
 
     public static BufferedImage breakBlock;
     public static BufferedImage misteryBlock;
@@ -299,6 +300,7 @@ public class Images {
             //maps
             testMap = ImageIO.read(getClass().getResourceAsStream("/maps/testmap1.png"));
             testMaptwo = ImageIO.read(getClass().getResourceAsStream("/maps/testmap2.png"));
+            helloWorld = ImageIO.read(getClass().getResourceAsStream("/maps/Hello World.png"));
 
             //blocks
             boundBlock = interactableSpriteSheet.crop(12,73,16,16);
