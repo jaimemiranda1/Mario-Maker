@@ -88,7 +88,7 @@ public class MenuState extends State {
 				handler.getMouseManager().setUimanager(uiManager);
 
 				//New Map
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (64), 128, 64, "New Map", () -> {
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (50), 128, 64, "New Map", () -> {
 					if(!handler.isInMap()) {
 						mode = "Menu";
 						initNew("New Map Creator", handler);
@@ -106,7 +106,7 @@ public class MenuState extends State {
 				}, handler,Color.BLACK));
 
 				//testmap2
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (50), 128, 64, "Map 2", () -> {
 					if(!handler.isInMap()) {
 						mode = "Menu";
 						handler.setMap(MapBuilder.createMap(Images.testMaptwo, handler));
@@ -115,7 +115,7 @@ public class MenuState extends State {
 				}, handler,Color.BLACK));
 				
 				//Hello World map
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (128), 128, 64, "Hello World", () -> {
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (100), 128, 64, "Hello World", () -> {
 					if(!handler.isInMap()) {
 						mode = "Menu";
 						handler.setMap(MapBuilder.createMap(Images.helloWorld, handler));
@@ -124,7 +124,7 @@ public class MenuState extends State {
 				}, handler,Color.BLACK));
 
 				//other
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (192), 128, 64, "Other", () -> {
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (150), 128, 64, "Other", () -> {
 					if(!handler.isInMap()){
 						mode = "Menu";
 						JFileChooser chooser = new JFileChooser("/maps");
