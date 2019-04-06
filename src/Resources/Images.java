@@ -48,6 +48,7 @@ public class Images {
 
 
     public static BufferedImage[] goomba;
+    public static BufferedImage[] dino;	//New enemy
 
 
     public static BufferedImage title;
@@ -65,6 +66,7 @@ public class Images {
     public static BufferedImage blueBlock;
     public static BufferedImage mushroom;
     public static BufferedImage goombaDies;
+    public static BufferedImage dinoDies;
 
     private SpriteSheet mainmenuSpriteSheet;
     private SpriteSheet backgroundSpriteSheet;
@@ -74,6 +76,7 @@ public class Images {
     private SpriteSheet goombaSpriteSheet;
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
+    private SpriteSheet dinoSpriteSheet;
 
     public Images() {
 
@@ -102,6 +105,7 @@ public class Images {
         marioBigJumpLeft = new BufferedImage[5];
         marioBigJumpRight = new BufferedImage[5];
         goomba = new BufferedImage[2];
+        dino = new BufferedImage[5];
 
 
 
@@ -117,6 +121,7 @@ public class Images {
             goombaSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/goombaSprite.png")));
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
+            dinoSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet.png")));
 
 
             //Images
@@ -306,7 +311,6 @@ public class Images {
             goldenBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/NewBlock1.png"));
             blueBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/NewBlock0.png"));
             
-
             //items
             mushroom = interactableSpriteSheet.crop(112,34,16,16);
 
@@ -314,6 +318,14 @@ public class Images {
             goomba[0]=goombaSpriteSheet.crop(119,40,162,162);
             goomba[1]= goombaSpriteSheet.crop(329,40,162,162);
             goombaDies=goombaSpriteSheet.crop(539,100,162,81);
+            
+            //new enemy
+            dino[0] = dinoSpriteSheet.crop(328,329,21,34);
+            dino[1] = dinoSpriteSheet.crop(349,330,22,33);
+            dino[2] = dinoSpriteSheet.crop(374,337,20,26);
+            dino[3] = dinoSpriteSheet.crop(396,345,18,18);
+            dino[4] = dinoSpriteSheet.crop(415,346,18,17);
+            dinoDies = dinoSpriteSheet.crop(436,353,18,10);
 
 
         }catch (IOException e) {

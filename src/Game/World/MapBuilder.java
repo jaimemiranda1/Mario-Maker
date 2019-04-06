@@ -1,15 +1,22 @@
 package Game.World;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+
 import Game.Entities.DynamicEntities.BaseDynamicEntity;
+import Game.Entities.DynamicEntities.Dino;
 import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Mushroom;
-import Game.Entities.StaticEntities.*;
+import Game.Entities.StaticEntities.BaseStaticEntity;
+import Game.Entities.StaticEntities.BlueBlock;
+import Game.Entities.StaticEntities.BoundBlock;
+import Game.Entities.StaticEntities.BreakBlock;
+import Game.Entities.StaticEntities.GoldenBlock;
+import Game.Entities.StaticEntities.MisteryBlock;
+import Game.Entities.StaticEntities.SurfaceBlock;
 import Main.Handler;
 import Resources.Images;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class MapBuilder {
 
@@ -23,6 +30,7 @@ public class MapBuilder {
 	public static int blueBlock = new Color(255,0,167).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
+	public static int dino = new Color(200,180,50).getRGB();
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -59,9 +67,12 @@ public class MapBuilder {
 				}else if(currentPixel == goomba){
 					BaseDynamicEntity Goomba = new Goomba(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Goomba);
+				}else if(currentPixel == dino){
+					BaseDynamicEntity Dino = new Dino(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(Dino);
 				}
-			}
 
+			}
 		}
 		if(mapDone) {
 			Images.makeMap(50, pixelMultiplier, mapImage.getWidth(), 100, mapInCreation, handler);
