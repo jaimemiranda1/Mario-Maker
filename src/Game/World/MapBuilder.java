@@ -19,6 +19,8 @@ public class MapBuilder {
 	public static int surfaceBlock = new Color(255,106,0).getRGB();
 	public static int breakBlock = new Color(0,38,255).getRGB();
 	public static int misteryBlock = new Color(255,216,0).getRGB();
+	public static int goldenBlock = new Color(0,255,120).getRGB();
+	public static int blueBlock = new Color(255,0,167).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
 	public static boolean mapDone = false;
@@ -45,6 +47,12 @@ public class MapBuilder {
 				}else if(currentPixel == misteryBlock){
 					BaseStaticEntity MisteryBlock = new MisteryBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(MisteryBlock);
+				}else if(currentPixel == goldenBlock){
+					BaseStaticEntity GoldenBlock = new GoldenBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(GoldenBlock);
+				}else if(currentPixel == blueBlock){
+					BaseStaticEntity BlueBlock = new BlueBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(BlueBlock);
 				}else if(currentPixel == mushroom){
 					BaseDynamicEntity Mushroom = new Mushroom(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Mushroom);
