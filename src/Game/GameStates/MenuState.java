@@ -231,7 +231,7 @@ public class MenuState extends State {
 			colorSelected = MapBuilder.blueBlock;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,255,120), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,200,180,50), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.dino;
 		}
