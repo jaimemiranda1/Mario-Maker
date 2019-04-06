@@ -221,12 +221,12 @@ public class MenuState extends State {
 			colorSelected = MapBuilder.goomba;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_8)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,0,0), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,255,0,167), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.goldenBlock;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,0,0), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,255,120), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.blueBlock;
 		}
@@ -264,7 +264,10 @@ public class MenuState extends State {
 					"4 -> Surface Block (Orange)\n" +
 					"5 -> Bounds Block (Black)\n" +
 					"6 -> Mushroom (Purple)\n" +
-					"7 -> Goomba (Brown)");
+					"7 -> Goomba (Brown)\n"+
+					"8 -> Golden Block (Light Green)\n"+
+					"9 -> Blue Block (Fuschia)\n"+
+					"E -> Dino (Dull Yellow)");
 		}
 	}
 	public UIAnimationButton getBut() {
