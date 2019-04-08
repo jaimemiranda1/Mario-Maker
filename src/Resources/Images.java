@@ -300,7 +300,7 @@ public class Images {
             //maps
             testMap = ImageIO.read(getClass().getResourceAsStream("/maps/testmap1.png"));
             testMaptwo = ImageIO.read(getClass().getResourceAsStream("/maps/testmap2.png"));
-            helloWorld = ImageIO.read(getClass().getResourceAsStream("/maps/Hello World.png"));
+            helloWorld = ImageIO.read(getClass().getResourceAsStream("/maps/HelloWorld.png"));
 
             //blocks
             boundBlock = interactableSpriteSheet.crop(12,73,16,16);
