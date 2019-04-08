@@ -20,10 +20,6 @@ public class GameOverState extends State {
 		super(handler);
 		uiManager = new UIManager(handler);
 		handler.getMouseManager().setUimanager(uiManager);
-		uiManager.addObjects(new UIStringButton(56, 223, 128, 64, "Restart", () -> {
-			handler.getMouseManager().setUimanager(null);
-			State.setState(handler.getGame().gameState);
-		},handler,Color.WHITE));
 
 		uiManager.addObjects(new UIStringButton(56, 223+(64+16), 128, 64, "Options", () -> {
 			handler.getMouseManager().setUimanager(null);

@@ -1,10 +1,15 @@
 package Main;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferStrategy;
+
 import Display.DisplayScreen;
 import Display.UI.UIPointer;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Player;
 import Game.Entities.StaticEntities.BreakBlock;
+import Game.GameStates.GameOverState;
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
@@ -16,9 +21,6 @@ import Input.KeyManager;
 import Input.MouseManager;
 import Resources.Images;
 import Resources.MusicHandler;
-
-import java.awt.*;
-import java.awt.image.BufferStrategy;
 
 
 /**
@@ -49,6 +51,7 @@ public class GameSetUp implements Runnable {
     public State gameState;
     public State menuState;
     public State pauseState;
+    public State gameOverState;
 
     //Res.music
     private MusicHandler musicHandler;
@@ -80,6 +83,7 @@ public class GameSetUp implements Runnable {
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
+        gameOverState = new GameOverState(handler);
 
         State.setState(menuState);
     }
