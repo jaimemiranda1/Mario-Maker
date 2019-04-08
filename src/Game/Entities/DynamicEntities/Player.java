@@ -135,8 +135,10 @@ public class Player extends BaseDynamicEntity {
 
 		boolean marioDies = false;
 		boolean toRight = moving && facing.equals("Right");
+		boolean toLeft = moving && facing.equals("Left");
 
 		Rectangle marioBounds = toRight ? mario.getRightBounds() : mario.getLeftBounds();
+		Rectangle marioBounds1 = toLeft ? mario.getLeftBounds() : mario.getRightBounds();
 
 		for (BaseStaticEntity brick : bricks) {
 			Rectangle brickBounds = !toRight ? brick.getRightBounds() : brick.getLeftBounds();
@@ -151,7 +153,9 @@ public class Player extends BaseDynamicEntity {
 
 		for(BaseDynamicEntity enemy : enemies){
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
-			if (marioBounds.intersects(enemyBounds)) {
+			Rectangle enemyBounds1 = !toLeft ? enemy.getLeftBounds() : enemy.getRightBounds();
+			
+			if (marioBounds.intersects(enemyBounds) || marioBounds1.intersects(enemyBounds1)) {
 				marioDies = true;
 				State.setState(handler.getGame().gameOverState);
 				break;
