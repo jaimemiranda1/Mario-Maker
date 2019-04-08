@@ -53,6 +53,7 @@ public class Images {
 
     public static BufferedImage title;
     public static BufferedImage Pause;
+    public static BufferedImage gameOver;
     public static BufferedImage Cursor;
 
     public static BufferedImage testMap;
@@ -128,6 +129,7 @@ public class Images {
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
             Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/Pause.png"));
+            gameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/GameOver.jpg"));
             Cursor = ImageIO.read(getClass().getResourceAsStream("/Sheets/cursor.png"));
             butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut
             butstart[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/HoverBut.png"));//hoverbut
