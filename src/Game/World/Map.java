@@ -43,7 +43,7 @@ public class Map {
     	if(block.sprite==Images.boundBlock ) {
     		boundaryOnMap.add(block);
     	}
-    	else blocksOnMap.add(block);
+    	 blocksOnMap.add(block);
     }
     public void addEnemy(BaseDynamicEntity entity){
         if(entity instanceof Mario){
