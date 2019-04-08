@@ -84,12 +84,27 @@ public class Player extends BaseDynamicEntity {
 		Player mario = this;
 		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
 		ArrayList<BaseDynamicEntity> enemies =  handler.getMap().getEnemiesOnMap();
+		ArrayList<BaseStaticEntity> boundary =  handler.getMap().getBoundaryOnMap();
+		
 
 		Rectangle marioBottomBounds =getBottomBounds();
 
 		if (!mario.jumping) {
 			falling = true;
 		}
+		boolean marioDies=false;
+		for(BaseStaticEntity bound : boundary){
+			Rectangle boundTopBounds = bound.getTopBounds();
+		
+			
+			if (marioBottomBounds.intersects(boundTopBounds)) {
+				marioDies = true;
+				State.setState(handler.getGame().gameOverState);
+				break;
+			}
+			
+		}
+		
 
 		for (BaseStaticEntity brick : bricks) {
 			Rectangle brickTopBounds = brick.getTopBounds();
@@ -111,7 +126,10 @@ public class Player extends BaseDynamicEntity {
 				velY=0;
 
 			}
-		}
+		
+			if(marioDies) {
+				handler.getMap().reset();
+			}}
 	}
 
 	public void checkTopCollisions() {
@@ -125,6 +143,7 @@ public class Player extends BaseDynamicEntity {
 				velY=0;
 				mario.setY(brick.getY() + brick.height);
 			}
+			
 		}
 	}
 

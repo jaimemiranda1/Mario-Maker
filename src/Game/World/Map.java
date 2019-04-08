@@ -24,6 +24,7 @@ public class Map {
     private Random rand;
     private Wall walls;
     private int mapBackground;
+	private ArrayList<BaseStaticEntity> boundaryOnMap;
 
     public Map(Handler handler) {
         this.handler=handler;
@@ -33,12 +34,16 @@ public class Map {
         this.walls = new Wall(this.handler);
         this.blocksOnMap = new ArrayList<>();
         this.enemiesOnMap = new ArrayList<>();
+        this.boundaryOnMap = new ArrayList<>();
         bottomBorder=handler.getHeight();
         this.mapBackground = this.rand.nextInt(6);
     }
 
     public void addBlock(BaseStaticEntity block){
-        blocksOnMap.add(block);
+    	if(block.sprite==Images.boundBlock ) {
+    		boundaryOnMap.add(block);
+    	}
+    	else blocksOnMap.add(block);
     }
     public void addEnemy(BaseDynamicEntity entity){
         if(entity instanceof Mario){
@@ -84,6 +89,9 @@ public class Map {
 
     public ArrayList<BaseStaticEntity> getBlocksOnMap() {
         return blocksOnMap;
+    }
+    public ArrayList<BaseStaticEntity> getBoundaryOnMap() {
+        return boundaryOnMap;
     }
 
     public ArrayList<BaseDynamicEntity> getEnemiesOnMap() {
