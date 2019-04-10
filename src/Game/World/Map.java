@@ -4,6 +4,7 @@ import Display.UI.UIPointer;
 import Game.Entities.DynamicEntities.*;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.Wall;
+import Game.GameStates.State;
 import Main.Handler;
 import Resources.Images;
 

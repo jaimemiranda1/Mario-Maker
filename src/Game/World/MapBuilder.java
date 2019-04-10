@@ -34,6 +34,7 @@ public class MapBuilder {
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
+		Images.currentImage = mapImage;
 		Map mapInCreation = new Map(handler);
 		for (int i = 0; i < mapImage.getWidth(); i++) {
 			for (int j = 0; j < mapImage.getHeight(); j++) {

@@ -59,7 +59,8 @@ public class Images {
     public static BufferedImage testMap;
     public static BufferedImage testMaptwo;
     public static BufferedImage helloWorld;
-
+    public static BufferedImage currentImage;
+    
     public static BufferedImage breakBlock;
     public static BufferedImage misteryBlock;
     public static BufferedImage surfaceBlock;
