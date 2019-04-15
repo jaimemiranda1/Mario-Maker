@@ -174,7 +174,7 @@ public class Player extends BaseDynamicEntity {
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
 			Rectangle enemyBounds1 = !toLeft ? enemy.getLeftBounds() : enemy.getRightBounds();
 			
-			if (marioBounds.intersects(enemyBounds) || marioBounds1.intersects(enemyBounds1)) {
+			if ((marioBounds.intersects(enemyBounds) || marioBounds1.intersects(enemyBounds1)) && !(enemy instanceof Mushroom)) {
 				marioDies = true;
 				State.setState(handler.getGame().gameOverState);
 				break;
