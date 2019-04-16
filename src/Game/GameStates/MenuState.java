@@ -298,6 +298,7 @@ public class MenuState extends State {
 					"7 -> Goomba (Brown)\n"+
 					"8 -> Golden Block (Light Green)\n"+
 					"9 -> Blue Block (Fuschia)\n"+
+					"L -> Luigi (Pakistan Green)\n" +
 					"E -> Dino (Dull Yellow)");
 		}
 	}
