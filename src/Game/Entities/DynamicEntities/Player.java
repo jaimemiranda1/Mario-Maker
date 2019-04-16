@@ -187,6 +187,7 @@ public class Player extends BaseDynamicEntity {
 	}
 
 	public void jump() {
+
 		if(!jumping && !falling){
 			jumping=true;
 			velY=10;
