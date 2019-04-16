@@ -58,7 +58,7 @@ public class Map {
     }
 
     public void drawMap(Graphics2D g2) {
-        handler.setIsInMap(true);
+        handler.setIsInMapL(true);
         Point camLocation = new Point((int)handler.getCamera().getX(), (int)handler.getCamera().getY());
         g2.translate(-camLocation.x, -camLocation.y);
         g2.drawImage(Images.backgrounds2[this.mapBackground], camLocation.x, camLocation.y, this.handler.getWidth(), this.handler.getHeight(),null);

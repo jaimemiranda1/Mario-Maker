@@ -40,7 +40,7 @@ public class Mario extends Player{
                 if (handler.getKeyManager().right && !handler.getKeyManager().up && !handler.getKeyManager().down) {
                     if (handler.getKeyManager().runbutt) {
                         velX = 6;
-                        running = true;
+                        running = true ;
                     } else {
                         velX = 3;
                         running = false;
@@ -77,7 +77,7 @@ public class Mario extends Player{
 
                 if (falling) {
                     y = (int) (y + velY);
-                    velY = velY + gravityAcc;
+                    velY = velY + 0.07;
                 }
                 x += velX;
             } else {

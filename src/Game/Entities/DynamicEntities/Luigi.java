@@ -33,7 +33,7 @@ public class Luigi extends Player{
 	    if(!grabbed) {
             super.tick();
             if (!this.hit) {
-                if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_CONTROL) && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
+                if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_CONTROL*2) && !handler.getKeyManager().upL && !handler.getKeyManager().downL) {
                     this.jump();
                 }
 
@@ -76,6 +76,7 @@ public class Luigi extends Player{
                 }
 
                 if (falling) {
+                	
                     y = (int) (y + velY);
                     velY = velY + gravityAcc;
                 }
