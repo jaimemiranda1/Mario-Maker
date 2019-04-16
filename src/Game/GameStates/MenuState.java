@@ -31,6 +31,7 @@ public class MenuState extends State {
 	public UIManager uiManager;
 	private int background;
 	private String mode= "Menu";
+	public boolean multiplayer = false;
 
 	private DisplayScreen display;
 	private int[] str={83,117,98,32,116,111,32,80,101,119,100,115};
@@ -72,7 +73,7 @@ public class MenuState extends State {
 				State.setState(handler.getGame().gameState);}}, this.handler);
 		uiManager.addObjects(new UIImageButton(handler.getWidth()/2-64, handler.getHeight()/2+(handler.getHeight()/8), 128, 64, Images.butstart, () -> {
 			if(!handler.isInMap()) {
-				mode = "Select";
+				mode = "Mode Select";
 			}
 		}));
 	}
@@ -145,13 +146,24 @@ public class MenuState extends State {
 				}, handler,Color.BLACK));
 				uiManager.addObjects(this.but);
 			}
-			if (mode.equals("Selecting") && handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE) && (!handler.isInMap())) {
-				mode = "Menu";
+			if (mode.equals("Mode Select")) {
+				mode = "Selecting";
 				uiManager = new UIManager(handler);
 				handler.getMouseManager().setUimanager(uiManager);
-				uiManager.addObjects(new UIImageButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 8), 128, 64, Images.butstart, () -> {
+				//Single Player
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) - (50), 128, 64, "Single Player", () -> {
+					if(!handler.isInMap()) {
 					mode = "Select";
-				}));
+					multiplayer = false;
+					}
+				}, handler, Color.BLACK));
+				//Multiplayer
+				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Multiplayer", () -> {
+					if(!handler.isInMap()) {
+					mode = "Select";
+					multiplayer = true;
+					}
+				}, handler, Color.BLACK));
 			}
 		}else{
 			handler.getGame().mouseManager=null;
@@ -230,19 +242,24 @@ public class MenuState extends State {
 			colorSelected = MapBuilder.goomba;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_8)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,255,0,167), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,1,0.47f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.goldenBlock;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,255,120), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,0,0.65f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.blueBlock;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_E)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,200,180,50), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.78f,0.70f,0.20f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.dino;
+		}
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_L)){
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,0.4f,0), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.luigi;
 		}
 
 		if(mouseManager.isLeftPressed() && !clicked){
