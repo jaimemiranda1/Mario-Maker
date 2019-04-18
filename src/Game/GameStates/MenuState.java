@@ -217,7 +217,7 @@ public class MenuState extends State {
 			colorSelected = MapBuilder.breakBlock;
 		}
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_3)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,1,0), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,0.85f,0), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.misteryBlock;
 		}
@@ -261,6 +261,11 @@ public class MenuState extends State {
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.luigi;
 		}
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S)){
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,1,0.2f), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.star;
+		}
 
 		if(mouseManager.isLeftPressed() && !clicked){
 			int posX =mouseManager.getMouseX()/GridPixelsize;
@@ -299,6 +304,7 @@ public class MenuState extends State {
 					"8 -> Golden Block (Light Green)\n"+
 					"9 -> Blue Block (Fuschia)\n"+
 					"L -> Luigi (Pakistan Green)\n" +
+					"S -> Star (Bright Yellow)\n" +
 					"E -> Dino (Dull Yellow)");
 		}
 	}

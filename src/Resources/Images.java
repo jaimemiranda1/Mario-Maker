@@ -66,6 +66,8 @@ public class Images {
     public static BufferedImage title;
     public static BufferedImage Pause;
     public static BufferedImage gameOver;
+    public static BufferedImage luigiWins;
+    public static BufferedImage marioWins;
     public static BufferedImage Cursor;
 
     public static BufferedImage testMap;
@@ -82,6 +84,7 @@ public class Images {
     public static BufferedImage mushroom;
     public static BufferedImage goombaDies;
     public static BufferedImage dinoDies;
+    public static BufferedImage winStar;
 
     private SpriteSheet mainmenuSpriteSheet;
     private SpriteSheet backgroundSpriteSheet;
@@ -159,6 +162,8 @@ public class Images {
             title = mainmenuSpriteSheet.crop(16,16,256,224);
             Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/Pause.png"));
             gameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/GameOver.jpg"));
+            luigiWins = ImageIO.read(getClass().getResourceAsStream("/Sheets/LuigiWins.jpg"));
+            marioWins = ImageIO.read(getClass().getResourceAsStream("/Sheets/MarioWins.png"));
             Cursor = ImageIO.read(getClass().getResourceAsStream("/Sheets/cursor.png"));
             butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut
             butstart[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/HoverBut.png"));//hoverbut
@@ -384,6 +389,9 @@ public class Images {
             
             //items
             mushroom = interactableSpriteSheet.crop(112,34,16,16);
+            
+            //new item
+            winStar = ImageIO.read(getClass().getResourceAsStream("/Sheets/Star.png"));
 
             //enemy
             goomba[0]=goombaSpriteSheet.crop(119,40,162,162);

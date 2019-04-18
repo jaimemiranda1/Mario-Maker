@@ -15,6 +15,7 @@ import Game.Entities.StaticEntities.BoundBlock;
 import Game.Entities.StaticEntities.BreakBlock;
 import Game.Entities.StaticEntities.GoldenBlock;
 import Game.Entities.StaticEntities.MisteryBlock;
+import Game.Entities.StaticEntities.Star;
 import Game.Entities.StaticEntities.SurfaceBlock;
 import Main.Handler;
 import Resources.Images;
@@ -33,6 +34,7 @@ public class MapBuilder {
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
 	public static int dino = new Color(200,180,50).getRGB();
+	public static int star = new Color(255,255,51).getRGB();
 	public static boolean mapDone = false;
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -76,6 +78,9 @@ public class MapBuilder {
 				}else if(currentPixel == luigi){
 					BaseDynamicEntity Luigi = new Luigi(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Luigi);
+				}else if(currentPixel == star){
+					BaseStaticEntity Star = new Star(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(Star);
 				}
 
 			}
