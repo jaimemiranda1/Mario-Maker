@@ -26,6 +26,7 @@ public class Map {
     private Wall walls;
     private int mapBackground;
 	private ArrayList<BaseStaticEntity> boundaryOnMap;
+	private ArrayList<BaseStaticEntity> StarOnMap;
 
     public Map(Handler handler) {
         this.handler=handler;
@@ -36,6 +37,7 @@ public class Map {
         this.blocksOnMap = new ArrayList<>();
         this.enemiesOnMap = new ArrayList<>();
         this.boundaryOnMap = new ArrayList<>();
+        this.StarOnMap = new ArrayList<>();
         bottomBorder=handler.getHeight();
         this.mapBackground = this.rand.nextInt(6);
     }
@@ -43,6 +45,9 @@ public class Map {
     public void addBlock(BaseStaticEntity block){
     	if(block.sprite==Images.boundBlock ) {
     		boundaryOnMap.add(block);
+    	}
+    	if(block.sprite==Images.winStar ) {
+    		StarOnMap.add(block);
     	}
     	 blocksOnMap.add(block);
     }
@@ -90,6 +95,9 @@ public class Map {
 
     public ArrayList<BaseStaticEntity> getBlocksOnMap() {
         return blocksOnMap;
+    }
+    public ArrayList<BaseStaticEntity> getStarOnMap() {
+        return StarOnMap;
     }
     public ArrayList<BaseStaticEntity> getBoundaryOnMap() {
         return boundaryOnMap;

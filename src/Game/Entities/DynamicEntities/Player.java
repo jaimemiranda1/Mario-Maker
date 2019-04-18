@@ -82,17 +82,21 @@ public class Player extends BaseDynamicEntity {
 
 	public void checkBottomCollisions() {
 		Player mario = this;
+		Player luigi=this;
 		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
 		ArrayList<BaseDynamicEntity> enemies =  handler.getMap().getEnemiesOnMap();
 		ArrayList<BaseStaticEntity> boundary =  handler.getMap().getBoundaryOnMap();
+		ArrayList<BaseStaticEntity> star =  handler.getMap().getStarOnMap();
 		
 
 		Rectangle marioBottomBounds =getBottomBounds();
+		Rectangle luigiBottomBounds =luigi.getBottomBounds();
 
 		if (!mario.jumping) {
 			falling = true;
 		}
 		boolean marioDies=false;
+		boolean luigiDies=false;
 		for(BaseStaticEntity bound : boundary){
 			Rectangle boundTopBounds = bound.getTopBounds();
 		
@@ -102,6 +106,23 @@ public class Player extends BaseDynamicEntity {
 				State.setState(handler.getGame().gameOverState);
 				break;
 			}
+			
+		}
+		for(BaseStaticEntity winStar : star){
+			Rectangle StarTopBounds = winStar.getTopBounds();
+		
+			
+			if (marioBottomBounds.intersects(StarTopBounds)) {
+				marioDies = true;
+				State.setState(handler.getGame().marioWinState);
+				break;
+			}
+			if (luigiBottomBounds.intersects(StarTopBounds)) {
+				 luigiDies = true;
+				State.setState(handler.getGame().luigiWinState);
+				break;
+			}
+			
 			
 		}
 		
@@ -129,12 +150,16 @@ public class Player extends BaseDynamicEntity {
 		
 			if(marioDies) {
 				handler.getMap().reset();
+			}
+			if(luigiDies) {
+				handler.getMap().reset();
 			}}
 	}
 
 	public void checkTopCollisions() {
 		Player mario = this;
 		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
+		ArrayList<BaseStaticEntity> star =  handler.getMap().getStarOnMap();
 
 		Rectangle marioTopBounds = mario.getTopBounds();
 		for (BaseStaticEntity brick : bricks) {
@@ -144,6 +169,18 @@ public class Player extends BaseDynamicEntity {
 				mario.setY(brick.getY() + brick.height);
 			}
 			
+			
+		}
+		for (BaseStaticEntity winstar : star) {
+			Rectangle starBottomBounds = winstar.getBottomBounds();
+			if (marioTopBounds.intersects(starBottomBounds)) {
+				velY=0;
+				mario.setY(winstar.getY() + winstar.height);
+				State.setState(handler.getGame().marioWinState);
+				break;
+			}
+			
+			
 		}
 	}
 
@@ -151,6 +188,7 @@ public class Player extends BaseDynamicEntity {
 		Player mario = this;
 		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
 		ArrayList<BaseDynamicEntity> enemies = handler.getMap().getEnemiesOnMap();
+		ArrayList<BaseStaticEntity> star =  handler.getMap().getStarOnMap();
 
 		boolean marioDies = false;
 		boolean toRight = moving && facing.equals("Right");
@@ -169,6 +207,20 @@ public class Player extends BaseDynamicEntity {
 					mario.setX(brick.getX() + brick.getDimension().width);
 			}
 		}
+		for (BaseStaticEntity winstar : star) {
+			Rectangle winstarBounds = !toRight ? winstar.getRightBounds() : winstar.getLeftBounds();
+			if (marioBounds.intersects(winstarBounds)) {
+				velX=0;
+				State.setState(handler.getGame().marioWinState);
+				if(toRight)
+					mario.setX(winstar.getX() - mario.getDimension().width);
+				
+				
+				
+				else
+					mario.setX(winstar.getX() + winstar.getDimension().width);
+			}
+		}
 
 		for(BaseDynamicEntity enemy : enemies){
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
@@ -179,7 +231,10 @@ public class Player extends BaseDynamicEntity {
 				State.setState(handler.getGame().gameOverState);
 				break;
 			}
+			
 		}
+		
+		
 
 		if(marioDies) {
 			handler.getMap().reset();
