@@ -69,6 +69,7 @@ public class Images {
     public static BufferedImage luigiWins;
     public static BufferedImage marioWins;
     public static BufferedImage Cursor;
+    public static BufferedImage loading;
 
     public static BufferedImage testMap;
     public static BufferedImage testMaptwo;
@@ -168,6 +169,7 @@ public class Images {
             butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut
             butstart[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/HoverBut.png"));//hoverbut
             butstart[2]= ImageIO.read(getClass().getResourceAsStream("/Buttons/ClickedBut.png"));//clickbut
+            loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/Loading.jpg"));
 
             backgrounds[0] = backgroundSpriteSheet.crop(2,2,512,432);
             backgrounds[1] = backgroundSpriteSheet.crop(516,2,512,432);

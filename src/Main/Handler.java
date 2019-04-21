@@ -28,9 +28,9 @@ public class Handler {
     private Luigi luigi;
     private Map map;
     private boolean marioInMap = false;
-    private boolean luigiInMap = false;
 
     private Camera camera;
+    private Camera cameraL;
 
 
     public Handler(){
@@ -101,15 +101,16 @@ public class Handler {
     public Camera getCamera() {
         return camera;
     }
-    public boolean isInMapL() {
-        return luigiInMap;
-    }
-
-    public void setIsInMapL(boolean is) {
-        luigiInMap = is;
+    
+    public Camera getCameraL() {
+    	return cameraL;
     }
 
     public void setCamera(Camera camera) {
         this.camera = camera;
+    }
+    
+    public void setCameraL(Camera cameraL) {
+    	this.cameraL = cameraL;
     }
 }

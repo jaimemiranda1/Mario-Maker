@@ -31,7 +31,7 @@ public class MenuState extends State {
 	public UIManager uiManager;
 	private int background;
 	private String mode= "Menu";
-	public boolean multiplayer = false;
+	public static boolean multiplayer = false;
 
 	private DisplayScreen display;
 	private int[] str={83,117,98,32,116,111,32,80,101,119,100,115};
@@ -256,12 +256,12 @@ public class MenuState extends State {
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.dino;
 		}
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_L)){
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_L) && multiplayer){
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,0.4f,0), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.luigi;
 		}
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S)){
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S) && multiplayer){
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,1,1,0.2f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.star;
@@ -291,7 +291,7 @@ public class MenuState extends State {
 			}
 			JOptionPane.showMessageDialog(display.getFrame(), "You cant have a map without at least a Mario and a floor right under him. (1 for Mario)");
 		}
-		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)){
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && multiplayer){
 			JOptionPane.showMessageDialog(display.getFrame(), "Number key <-> Color Mapping: \n" +
 					"0 -> Erase \n" +
 					"1 -> Mario (Red)\n" +
@@ -305,6 +305,19 @@ public class MenuState extends State {
 					"9 -> Blue Block (Fuschia)\n"+
 					"L -> Luigi (Pakistan Green)\n" +
 					"S -> Star (Bright Yellow)\n" +
+					"E -> Dino (Dull Yellow)");
+		}else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H) && !multiplayer){
+			JOptionPane.showMessageDialog(display.getFrame(), "Number key <-> Color Mapping: \n" +
+					"0 -> Erase \n" +
+					"1 -> Mario (Red)\n" +
+					"2 -> Break Block (Blue)\n" +
+					"3 -> Mystery Block (Yellow)\n" +
+					"4 -> Surface Block (Orange)\n" +
+					"5 -> Bounds Block (Black)\n" +
+					"6 -> Mushroom (Purple)\n" +
+					"7 -> Goomba (Brown)\n"+
+					"8 -> Golden Block (Light Green)\n"+
+					"9 -> Blue Block (Fuschia)\n"+
 					"E -> Dino (Dull Yellow)");
 		}
 	}
