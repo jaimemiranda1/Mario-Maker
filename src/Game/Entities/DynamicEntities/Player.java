@@ -110,16 +110,17 @@ public class Player extends BaseDynamicEntity {
 		}
 		for(BaseStaticEntity winStar : star){
 			Rectangle StarTopBounds = winStar.getTopBounds();
+			if (luigiBottomBounds.intersects(StarTopBounds)&&this instanceof Luigi) {
+				 luigiDies = true;
+				State.setState(handler.getGame().luigiWinState);
+				break;
+			}
+			
 		
 			
 			if (marioBottomBounds.intersects(StarTopBounds)) {
 				marioDies = true;
 				State.setState(handler.getGame().marioWinState);
-				break;
-			}
-			if (luigiBottomBounds.intersects(StarTopBounds)) {
-				 luigiDies = true;
-				State.setState(handler.getGame().luigiWinState);
 				break;
 			}
 			
@@ -173,6 +174,12 @@ public class Player extends BaseDynamicEntity {
 		}
 		for (BaseStaticEntity winstar : star) {
 			Rectangle starBottomBounds = winstar.getBottomBounds();
+			if (marioTopBounds.intersects(starBottomBounds)&&this instanceof Luigi) {
+				velY=0;
+				mario.setY(winstar.getY() + winstar.height);
+				State.setState(handler.getGame().luigiWinState);
+				break;
+			}
 			if (marioTopBounds.intersects(starBottomBounds)) {
 				velY=0;
 				mario.setY(winstar.getY() + winstar.height);
@@ -186,6 +193,7 @@ public class Player extends BaseDynamicEntity {
 
 	public void checkMarioHorizontalCollision(){
 		Player mario = this;
+		
 		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
 		ArrayList<BaseDynamicEntity> enemies = handler.getMap().getEnemiesOnMap();
 		ArrayList<BaseStaticEntity> star =  handler.getMap().getStarOnMap();
@@ -196,6 +204,7 @@ public class Player extends BaseDynamicEntity {
 
 		Rectangle marioBounds = toRight ? mario.getRightBounds() : mario.getLeftBounds();
 		Rectangle marioBounds1 = toLeft ? mario.getLeftBounds() : mario.getRightBounds();
+		
 
 		for (BaseStaticEntity brick : bricks) {
 			Rectangle brickBounds = !toRight ? brick.getRightBounds() : brick.getLeftBounds();
@@ -209,16 +218,15 @@ public class Player extends BaseDynamicEntity {
 		}
 		for (BaseStaticEntity winstar : star) {
 			Rectangle winstarBounds = !toRight ? winstar.getRightBounds() : winstar.getLeftBounds();
-			if (marioBounds.intersects(winstarBounds)) {
-				velX=0;
+			if ((marioBounds.intersects(winstarBounds) || marioBounds1.intersects(winstarBounds)) && (this instanceof Luigi)) {
+				marioDies = true;
+				State.setState(handler.getGame().luigiWinState);
+				break;
+			}
+			if ((marioBounds.intersects(winstarBounds) || marioBounds1.intersects(winstarBounds)) ) {
+				marioDies = true;
 				State.setState(handler.getGame().marioWinState);
-				if(toRight)
-					mario.setX(winstar.getX() - mario.getDimension().width);
-				
-				
-				
-				else
-					mario.setX(winstar.getX() + winstar.getDimension().width);
+				break;
 			}
 		}
 

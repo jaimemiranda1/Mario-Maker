@@ -274,8 +274,7 @@ public class GameSetUp implements Runnable {
 			if(State.getState() != null ) {
 				renderingPlayer = 2;
 				State.getState().render(g2);
-				System.out.println(handler.isInMap());
-				System.out.println(State.getState());
+			
 			}else if(!handler.isInMap()) {
 				g3.drawImage(Images.loading, 0, 0, handler.width, handler.height, null);
 			}
