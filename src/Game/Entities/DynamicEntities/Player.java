@@ -3,6 +3,7 @@ package Game.Entities.DynamicEntities;
 import Game.Entities.EntityBase;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.GameStates.State;
+import Main.GameSetUp;
 import Main.Handler;
 import Resources.Animation;
 
@@ -101,6 +102,16 @@ public class Player extends BaseDynamicEntity {
 			Rectangle boundTopBounds = bound.getTopBounds();
 		
 			
+			if (marioBottomBounds.intersects(boundTopBounds)&&GameSetUp.created2&&this instanceof Mario) {
+				marioDies = true;
+				State.setState(handler.getGame().luigiWinState);
+				break;
+			}
+			if (marioBottomBounds.intersects(boundTopBounds)&&this instanceof Luigi) {
+				marioDies = true;
+				State.setState(handler.getGame().marioWinState);
+				break;
+			}
 			if (marioBottomBounds.intersects(boundTopBounds)) {
 				marioDies = true;
 				State.setState(handler.getGame().gameOverState);
@@ -134,6 +145,7 @@ public class Player extends BaseDynamicEntity {
 				mario.setY(brick.getY() - mario.getDimension().height + 1);
 				falling = false;
 				velY=0;
+				
 			}
 		}
 

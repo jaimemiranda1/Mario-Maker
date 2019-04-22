@@ -32,7 +32,7 @@ import Resources.MusicHandler;
 public class GameSetUp implements Runnable {
 	public DisplayScreen display;
 	public DisplayScreen display2;
-	public boolean created2 = false;
+	public static boolean created2 = false;
 	public String title;
 	public static int renderingPlayer = 1;
 
@@ -183,7 +183,7 @@ public class GameSetUp implements Runnable {
 		if (handler.isInMap()) {
 			updateCamera();
 		}
-		if (handler.isInMap()) {
+		if (handler.isInMap()&&GameSetUp.created2==true) {
 			updateCameraL();
 		}
 		
