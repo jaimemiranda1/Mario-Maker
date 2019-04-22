@@ -178,15 +178,15 @@ public class GameSetUp implements Runnable {
 			display2.getCanvas().addMouseListener(mouseManager);
 			display2.getCanvas().addMouseMotionListener(mouseManager);
 		}
-		if(State.getState() != null) 
-			State.getState().tick();
+		if(State.getState() != null) {
+			State.getState().tick();}
 		if (handler.isInMap()) {
 			updateCamera();
 		}
-		if(handler.isInMap() && MenuState.multiplayer) {
+		if (handler.isInMap()) {
 			updateCameraL();
 		}
-
+		
 	}
 
 	private void updateCamera() {
@@ -254,7 +254,7 @@ public class GameSetUp implements Runnable {
 		//End Drawing!
 		bs.show();
 		g.dispose();
-		
+		 
 		if(created2) {
 			bs2 = display2.getCanvas().getBufferStrategy();
 			
@@ -270,9 +270,12 @@ public class GameSetUp implements Runnable {
 			//Draw Here
 			Graphics2D g2 = (Graphics2D) g3.create();
 			
-			if(State.getState() != null && handler.isInMap()) {
+			
+			if(State.getState() != null ) {
 				renderingPlayer = 2;
 				State.getState().render(g2);
+				System.out.println(handler.isInMap());
+				System.out.println(State.getState());
 			}else if(!handler.isInMap()) {
 				g3.drawImage(Images.loading, 0, 0, handler.width, handler.height, null);
 			}
