@@ -102,12 +102,12 @@ public class GameSetUp implements Runnable {
 
 	public void reStart(){
 		if(MenuState.multiplayer) {
-		gameState = new GameState(handler);
-		handler.getMario().setDead(true);
-		handler.getLuigi().setDead(true);
-		handler.setMap(MapBuilder.createMap(Images.currentImage, handler));
+			gameState = new GameState(handler);
+			handler.getMario().setDead(true);
+			handler.getLuigi().setDead(true);
+			handler.setMap(MapBuilder.createMap(Images.currentImage, handler));
 		}else
-		gameState = new GameState(handler);
+			gameState = new GameState(handler);
 		handler.getMario().setDead(true);
 		handler.setMap(MapBuilder.createMap(Images.currentImage, handler));
 	}
@@ -186,7 +186,7 @@ public class GameSetUp implements Runnable {
 		if (handler.isInMap()&&GameSetUp.created2==true) {
 			updateCameraL();
 		}
-		
+
 	}
 
 	private void updateCamera() {
@@ -210,7 +210,7 @@ public class GameSetUp implements Runnable {
 		}
 		handler.getCamera().moveCam(shiftAmount,shiftAmountY);
 	}
-	
+
 	private void updateCameraL() {
 		Player luigi = handler.getLuigi();
 		double luigiVelocityX = luigi.getVelX();
@@ -254,29 +254,29 @@ public class GameSetUp implements Runnable {
 		//End Drawing!
 		bs.show();
 		g.dispose();
-		 
+
 		if(created2) {
 			bs2 = display2.getCanvas().getBufferStrategy();
-			
+
 			if(bs2 == null) {
 				display2.getCanvas().createBufferStrategy(3);
 				return;
 			}
 			g3 = bs2.getDrawGraphics();
-			
+
 			//Clear Screen
 			g3.clearRect(0, 0, handler.width, handler.height);
-			
+
 			//Draw Here
 			Graphics2D g2 = (Graphics2D) g3.create();
-			
-			
+
+
 			if(State.getState() != null ) {
 				renderingPlayer = 2;
 				State.getState().render(g2);
-			
-			}else if(!handler.isInMap()) {
-				g3.drawImage(Images.loading, 0, 0, handler.width, handler.height, null);
+				if(!handler.isInMap()) {
+					g3.drawImage(Images.loading, 0, 0, handler.width, handler.height, null);
+				}
 			}
 			//End Drawing
 			bs2.show();
