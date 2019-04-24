@@ -116,6 +116,7 @@ public class MenuState extends State {
 				}, handler,Color.BLACK));
 				
 				//Hello World map
+				if(!(MenuState.multiplayer)) {
 				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (100), 128, 64, "Hello World", () -> {
 					if(!handler.isInMap()) {
 						mode = "Menu";
@@ -123,6 +124,14 @@ public class MenuState extends State {
 						State.setState(handler.getGame().gameState);
 					}
 				}, handler,Color.BLACK));
+				} else
+					uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (100), 128, 64, "Find the Star", () -> {
+						if(!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.findTheStar, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler,Color.BLACK));
 
 				//other
 				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (150), 128, 64, "Other", () -> {
