@@ -74,6 +74,7 @@ public class Images {
     public static BufferedImage testMap;
     public static BufferedImage testMaptwo;
     public static BufferedImage helloWorld;
+    public static BufferedImage helloWorldMultiplayer;
     public static BufferedImage findTheStar;
     public static BufferedImage currentImage;
     
@@ -378,6 +379,7 @@ public class Images {
             testMap = ImageIO.read(getClass().getResourceAsStream("/maps/testmap1.png"));
             testMaptwo = ImageIO.read(getClass().getResourceAsStream("/maps/testmap2.png"));
             helloWorld = ImageIO.read(getClass().getResourceAsStream("/maps/HelloWorld.png"));
+            helloWorldMultiplayer = ImageIO.read(getClass().getResourceAsStream("/maps/HelloWorldMultiplayer.png"));
             findTheStar = ImageIO.read(getClass().getResourceAsStream("/maps/findTheStar.png"));
 
             //blocks
