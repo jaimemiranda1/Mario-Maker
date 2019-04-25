@@ -27,6 +27,21 @@ public class Mario extends Player{
 			setDimension(new Dimension(width, this.height));
 		}
 	}
+	
+	private boolean doubleJump = false;
+	
+	@Override
+	public void jump() {	
+		if(!jumping && !falling ){
+			jumping = true; 		
+			velY = 13;	  
+			handler.getGame().getMusicHandler().playJump();	 
+			doubleJump = true;
+		}  
+		if (jumping && falling && doubleJump) {		
+			velY = -13;
+		}
+	}
 
 	@Override
 	public void tick(){
@@ -70,14 +85,16 @@ public class Mario extends Player{
                 if (jumping && velY <= 0) {
                     jumping = false;
                     falling = true;
+                    this.jump();
                 } else if (jumping) {
+                	falling = true;
                     velY = velY - gravityAcc;
                     y = (int) (y - velY);
                 }
 
                 if (falling) {
                     y = (int) (y + velY);
-                    velY = velY + 0.07;
+                    velY = velY + gravityAcc;
                 }
                 x += velX;
             } else {

@@ -27,6 +27,24 @@ public class Luigi extends Player{
 			setDimension(new Dimension(width, this.height));
 		}
 	}
+	
+    public boolean secondJump = false;
+    
+    public void jump() { 	
+    	if(!jumping && !falling ){
+    		jumping = true; 		
+    		velY = 10; 	  
+    		handler.getGame().getMusicHandler().playJump();	
+    		secondJump = true; 
+    	}   	
+    	if(!jumping && falling && secondJump) {
+    		velY = -10;
+    		handler.getGame().getMusicHandler().playJump();
+    		if (velY == -10) {
+    			secondJump = false;
+    		}
+    	}
+    }
 
 	@Override
 	public void tick(){
@@ -71,13 +89,13 @@ public class Luigi extends Player{
                     jumping = false;
                     falling = true;
                 } else if (jumping) {
-                    velY = velY - (gravityAcc/2);
+                    velY = velY - (gravityAcc);
                     y = (int) (y - velY);
                 }
 
                 if (falling) {
                     y = (int) (y + velY);
-                    velY = velY + (gravityAcc/2);
+                    velY = velY + (gravityAcc);
                 }
                 x += velX;
             } else {
