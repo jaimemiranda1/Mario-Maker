@@ -91,7 +91,9 @@ public class Player extends BaseDynamicEntity {
 		
 
 		Rectangle marioBottomBounds =getBottomBounds();
+		Rectangle marioTopBounds =getTopBounds();
 		Rectangle luigiBottomBounds =luigi.getBottomBounds();
+		Rectangle luigiTopBounds =luigi.getTopBounds();
 
 		if (!mario.jumping) {
 			falling = true;
@@ -100,19 +102,22 @@ public class Player extends BaseDynamicEntity {
 		boolean luigiDies=false;
 		for(BaseStaticEntity bound : boundary){
 			Rectangle boundTopBounds = bound.getTopBounds();
+			Rectangle boundBottomBounds = bound.getBottomBounds();
 		
 			
-			if (marioBottomBounds.intersects(boundTopBounds)&&GameSetUp.created2&&this instanceof Mario) {
+			if (marioBottomBounds.intersects(boundTopBounds)&&GameSetUp.created2&&this instanceof Mario
+				|| marioTopBounds.intersects(boundBottomBounds)&&GameSetUp.created2&&this instanceof Mario) {
 				marioDies = true;
 				State.setState(handler.getGame().luigiWinState);
 				break;
 			}
-			if (marioBottomBounds.intersects(boundTopBounds)&&this instanceof Luigi) {
+			if (marioBottomBounds.intersects(boundTopBounds)&&this instanceof Luigi || 
+					marioTopBounds.intersects(boundBottomBounds)&&this instanceof Luigi) {
 				marioDies = true;
 				State.setState(handler.getGame().marioWinState);
 				break;
 			}
-			if (marioBottomBounds.intersects(boundTopBounds)) {
+			if (marioBottomBounds.intersects(boundTopBounds) || marioTopBounds.intersects(boundBottomBounds)) {
 				marioDies = true;
 				State.setState(handler.getGame().gameOverState);
 				break;
